@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CV Site Coach – INST0087 Portfolio I</title>
+<style>
+:root{--bg:#faf7ff;--card:#fff;--ink:#2a1650;--muted:#6b5b8c;--line:#e3d9f5;--p:#6d28d9;--p2:#a855f7;--soft:#f0e7ff;--onp:#fff;--ok:#15803d;--code:#1e1038;--codeink:#e9defc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150a2b;--card:#20123f;--ink:#f3ecff;--muted:#b9a8dd;--line:#3a2766;--p:#a78bfa;--p2:#c084fc;--soft:#2c1a55;--onp:#1a0b38;--ok:#4ade80;--code:#0e0620;color-scheme:dark}}
+html{height:auto;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif}
+header.top{background:linear-gradient(135deg,#4c1d95,#7c3aed 60%,#c084fc);color:#fff;padding:28px 20px 0}
+.wrap{max-width:980px;margin:0 auto}
+h1{margin:0 0 4px;font-size:clamp(26px,5vw,38px)}
+header p{margin:0 0 18px;opacity:.92;max-width:62ch}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding-top:6px}
+nav.tabs button{border:0;background:rgba(255,255,255,.15);color:#fff;font:inherit;font-weight:600;padding:10px 16px;border-radius:12px 12px 0 0;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected=true]{background:var(--bg);color:var(--p)}
+main{max-width:980px;margin:0 auto;padding:22px 16px 60px}
+h2{margin:0 0 6px;color:var(--p)}
+.lead{color:var(--muted);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.big{font-size:54px;font-weight:800;line-height:1;color:var(--p)}
+.band{display:inline-block;background:var(--p);color:var(--onp);padding:3px 12px;border-radius:999px;font-weight:700}
+.bar{height:10px;background:var(--soft);border-radius:99px;overflow:hidden;margin:4px 0 12px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2));transition:width .3s}
+.row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.row input{margin-top:5px;width:18px;height:18px;accent-color:var(--p);flex:none}
+.row small{display:block;color:var(--muted)}
+.pts{margin-left:auto;font-size:12px;font-weight:700;color:var(--p);background:var(--soft);padding:2px 8px;border-radius:99px;flex:none}
+a.btn,button.btn{display:inline-block;background:var(--p);color:var(--onp);border:0;border-radius:10px;padding:6px 12px;font:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;margin-top:4px}
+button.ghost{background:var(--soft);color:var(--p)}
+pre{background:var(--code);color:var(--codeink);padding:12px;border-radius:10px;overflow-x:auto;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;margin:8px 0}
+.stage{background:#fff;color:#2a1650;border:1px dashed #cdb8f5;border-radius:10px;padding:14px;margin-top:8px;overflow:hidden}
+code.t{background:var(--soft);color:var(--p);padding:1px 6px;border-radius:6px}
+.lab{display:grid;gap:14px;grid-template-columns:260px 1fr}
+@media (max-width:720px){.lab{grid-template-columns:1fr}}
+.ctl label{display:block;font-size:13px;font-weight:600;margin-top:10px}
+.ctl input[type=range],.ctl select{width:100%}
+.ctl input[type=color]{width:100%;height:34px;border:0;background:none}
+.note{background:var(--soft);border-left:4px solid var(--p);padding:10px 14px;border-radius:8px;margin-bottom:14px}
+:root{--bad:#b91c1c}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bad:#f87171}}
+.drop{border:2px dashed var(--p2);border-radius:14px;padding:26px;text-align:center;background:var(--soft);margin-bottom:14px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.chk{display:flex;gap:8px;padding:7px 0;border-top:1px solid var(--line)}.chk small{display:block;color:var(--muted)}
+textarea{width:100%;min-height:110px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit}
+.wc{font-size:13px;font-weight:700;color:var(--muted)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--p);color:var(--onp);padding:10px 18px;border-radius:99px;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:20}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover{border-color:var(--p2)}.opt.right{border-color:var(--ok);background:var(--soft)}.opt.wrong{border-color:var(--bad)}
+textarea.code{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;min-height:200px;background:var(--code);color:var(--codeink);white-space:pre}
+iframe.pv{width:100%;height:380px;border:1px solid var(--line);border-radius:10px;background:#fff}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <h1>CV Site Coach</h1>
+  <p>Learn how to style every part of your INST0087 online CV, run the tests, and see an estimated score against the brief’s rubric.</p>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+ </div>
+</header>
+<main>
+ <section id="score" role="tabpanel"></section>
+ <section id="lab" role="tabpanel" hidden></section>
+ <section id="tech" role="tabpanel" hidden></section>
+ <section id="elems" role="tabpanel" hidden></section>
+ <section id="tests" role="tabpanel" hidden></section>
+ <section id="check" role="tabpanel" hidden></section>
+ <section id="comm" role="tabpanel" hidden></section>
+ <section id="play" role="tabpanel" hidden></section>
+ <section id="quiz" role="tabpanel" hidden></section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Checklist data: [id, category, points, label, hint, test?] ---------- */
+var CATS={c:["Completion & Engagement",25],t:["Technical Implementation",50],r:["Reflection & Critical Evaluation",25]};
+var U="https://";
+var ITEMS=[
+["c1","c",8,"CV covers education, skills, experience, projects and achievements","Follow the Joe Bloggs layout in the brief."],
+["c2","c",7,"Technical commentary written (about 750 words)","Task 2: challenges, problem solving, validation, future use."],
+["c3","c",3,"Webpage URL included in the commentary","Format: www.homepages.ucl.ac.uk/~xxxxxx"],
+["c4","c",3,"Webpage files + commentary submitted as Word or PDF","Zip or upload the folder as instructed."],
+["c5","c",4,"Original template author acknowledged in a References List","Third-party code must be credited."],
+["h1","t",2,"&lt;header&gt; used for branding / navigation","Name, title and contact details live here."],
+["h2","t",2,"&lt;nav&gt; used for the main menu","Anchor links to #profile, #experience…"],
+["h3","t",2,"&lt;main&gt; wraps the primary content","Only one per page."],
+["h4","t",3,"&lt;section&gt; groups education, skills, experience","Give each an id and a heading."],
+["h5","t",2,"&lt;article&gt; for independent blocks (a job, a project)","Each article could stand alone."],
+["h6","t",2,"&lt;aside&gt; for supplementary info","Languages, interests, quick facts."],
+["h7","t",2,"&lt;footer&gt; with contact info and copyright","© year, your name."],
+["h8","t",3,"An HTML &lt;table&gt; is included","Skills matrix or qualification table, with &lt;th&gt;."],
+["h9","t",3,"An &lt;img&gt; with meaningful alt text","Profile photo or project screenshot."],
+["m1","t",4,"Third-party HTML and CSS changed, not just the text","Layout, colours, fonts, spacing all modified."],
+["m2","t",4,"Changes marked with HTML comments","Example: &lt;!-- CHANGED: swapped div for section --&gt;"],
+["m3","t",4,"Code comments explain the purpose of key sections","Comment every major block in HTML and CSS."],
+["m4","t",5,"File structure: folder/index.html, css/style.css, images/","Clear, meaningful file names."],
+["m5","t",4,"Published on UCL Personal Webpages","Upload from a UCL machine or Desktop@UCL Anywhere, then open the live URL in a private window.",[null,"","Open your ~username address in a private window and check images and CSS load."]],
+["v1","t",4,"HTML passes the W3C Markup Validator","Fix every error; note any warnings.",[U+"validator.w3.org/","W3C Markup Validator","Check by URL, file upload or direct input. Screenshot the result before and after fixing."]],
+["v2","t",4,"CSS passes the W3C CSS Validator","Upload style.css or test the URL.",[U+"jigsaw.w3.org/css-validator/","W3C CSS Validator","Choose the file upload tab, then screenshot the report."]],
+["r1","r",4,"Compares prior knowledge with what you learned","Say what you knew before and what changed."],
+["r2","r",3,"Uses specific examples and code extracts from your site","Quote 2–3 short snippets."],
+["r3","r",3,"Discusses successes and failures","Be honest about what broke."],
+["r4","r",3,"Explains problem-solving strategy and decisions","Claim, evidence, so-what."],
+["r5","r",2,"Shows emotional engagement","Frustration, pride, surprise, in a sentence or two."],
+["r6","r",3,"Future improvements and professional application","Accessibility, JavaScript, a real portfolio."],
+["r7","r",3,"Validation reports and screenshots included as evidence","Both validators, before and after."],
+["r8","r",2,"Accessibility tested with WAVE","Fix contrast, missing alt, heading order.",[U+"wave.webaim.org/","WAVE accessibility checker","Enter your live URL. Screenshot the summary and list fixes."]],
+["r9","r",2,"Responsive and performance tested (Chrome DevTools / Lighthouse)","Check phone, tablet and desktop widths.",[U+"developer.chrome.com/docs/lighthouse/overview","Lighthouse (in Chrome DevTools)","Open DevTools, then the Lighthouse tab. Also try the Device Toolbar: "+U+"developer.chrome.com/docs/devtools/device-mode"]],
+["x1","r",0,"Extra: colour contrast checked","Body text needs at least 4.5:1.",[U+"webaim.org/resources/contrastchecker/","WebAIM Contrast Checker","Test text colour against background for every colour pair."]],
+["x2","r",0,"Extra: broken links checked","Every nav link and reference must work.",[U+"validator.w3.org/checklink","W3C Link Checker","Run on your published page."]]
+];
+var S={};try{S=JSON.parse(localStorage.getItem("cvcoach")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("cvcoach",JSON.stringify(S))}catch(e){}}
+
+function row(it){
+ var t=it[5],h='<label class="row"><input type="checkbox" data-id="'+it[0]+'"'+(S[it[0]]?" checked":"")+'><span>'+it[3]+'<small>'+it[4]+'</small>';
+ if(t&&t[0])h+='<a class="btn" href="'+t[0]+'" target="_blank" rel="noopener noreferrer">Open '+t[1]+' ↗</a>';
+ return h+'</span>'+(it[2]?'<span class="pts">'+it[2]+' pts</span>':'<span class="pts">bonus</span>')+'</label>';
+}
+function bandOf(n){return n>=80?"Publishable Quality":n>=70?"Exemplary":n>=60?"Proficient":n>=50?"Adequate":n>=40?"Emergent":"Poor"}
+
+function renderScore(){
+ var tot=0,by={c:0,t:0,r:0},open=[];
+ ITEMS.forEach(function(i){if(S[i[0]]){tot+=i[2];by[i[1]]+=i[2]}else if(i[2])open.push(i)});
+ open.sort(function(a,b){return b[2]-a[2]});
+ var nb=bandOf(tot);if(window.PB&&nb!=window.PB&&tot>window.PBt)toast("🎉 Level up: "+nb+"!");window.PB=nb;window.PBt=tot;
+ var h='<h2>Your estimated score</h2><p class="lead">Tick what you have genuinely done. The estimate updates instantly and saves in this browser.</p>';
+ h+='<div class="card"><div class="big">'+tot+'<small style="font-size:22px">/100</small></div> <span class="band">'+bandOf(tot)+'</span>';
+ h+='<p class="note" style="margin-top:12px">This counts presence, not quality. The rubric also rewards clarity, depth and polish, so treat it as a ceiling for your current progress.</p>';
+ for(var k in CATS)h+='<div><b>'+CATS[k][0]+'</b> <span style="float:right">'+by[k]+' / '+CATS[k][1]+'</span><div class="bar"><i style="width:'+by[k]/CATS[k][1]*100+'%"></i></div></div>';
+ h+='<b>Quickest wins next:</b><ul>'+open.slice(0,3).map(function(i){return'<li>'+i[3]+' (+'+i[2]+')</li>'}).join("")+'</ul>';
+ h+='<button class="btn ghost" id="reset">Reset all</button></div>';
+ for(var k2 in CATS){h+='<div class="card"><h3 style="margin:0 0 4px">'+CATS[k2][0]+' ('+CATS[k2][1]+')</h3>'+ITEMS.filter(function(i){return i[1]==k2}).map(row).join("")+'</div>'}
+ document.getElementById("score").innerHTML=h;
+}
+function renderTests(){
+ var h='<h2>Tests to run</h2><p class="lead">Every tool below is free. Run each one on your published page, fix issues, run again, and screenshot both results for your commentary.</p><div class="grid">';
+ ITEMS.filter(function(i){return i[5]}).forEach(function(i){
+  var t=i[5];h+='<div class="card"><label class="row" style="border:0;padding:0"><input type="checkbox" data-id="'+i[0]+'"'+(S[i[0]]?" checked":"")+'><b>'+i[3]+'</b></label><p style="margin:8px 0">'+t[2]+'</p>'+(t[0]?'<a class="btn" href="'+t[0]+'" target="_blank" rel="noopener noreferrer">Open '+t[1]+' ↗</a>':'')+'</div>'});
+ document.getElementById("tests").innerHTML=h+'</div><div class="note" style="margin-top:14px"><b>Evidence tip:</b> a before/after screenshot of each validator, with one sentence on what you fixed, is the strongest proof you can put in Task 2.</div>';
+}
+
+/* ---------- Style techniques (& is replaced by the demo's selector) ---------- */
+var TECH=[
+["Gradient banner","background","Gradients make a header feel designed with no image file.","&{background:linear-gradient(135deg,#6d28d9,#c084fc);color:#fff;padding:18px;border-radius:10px}","<b>Alex Morgan</b><br>Web Developer"],
+["Box model","padding, border, margin","Padding is inside the border, margin is outside. Most spacing bugs live here.","&{padding:16px;border:3px solid #6d28d9;margin:8px;background:#f0e7ff}","Padding + border + margin"],
+["Rounded corners and shadows","border-radius, box-shadow","Soft depth separates sections without lines.","&{padding:16px;border-radius:16px;box-shadow:0 8px 20px rgba(109,40,217,.3)}","A lifted card"],
+["Flexbox row","display:flex","One row, flexible spacing. Ideal for nav menus and header layouts.","&{display:flex;justify-content:space-between;gap:8px}& span{background:#e9d5ff;padding:8px 12px;border-radius:6px}","<span>Home</span><span>Skills</span><span>Contact</span>"],
+["CSS Grid columns","display:grid","Two or three columns for skills or the label/content CV layout.","&{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}& span{background:#e9d5ff;padding:8px;border-radius:6px;text-align:center}","<span>HTML</span><span>CSS</span><span>Git</span>"],
+["Hover and transition","&:hover, transition","Feedback on interaction makes links and cards feel alive.","&{transition:transform .2s,box-shadow .2s;padding:16px;background:#f0e7ff;border-radius:8px;cursor:pointer}&:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 16px rgba(0,0,0,.2)}","Hover over me"],
+["Typography","font-family, letter-spacing","Pair a serif heading with a sans body, and set line-height around 1.5.","&{font-family:Georgia,serif;letter-spacing:.12em;text-transform:uppercase;line-height:1.6;font-size:15px}","Personal Profile"],
+["Pseudo-element underline","::after","Add decoration with CSS only, so your HTML stays clean.","&{position:relative;display:inline-block;font-weight:700}&::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:3px;background:#a855f7;border-radius:2px}","Work Experience"],
+["Skill pills","display:inline-block","Turn list items into tags for your Key Skills section.","&{display:inline-block;padding:4px 12px;border-radius:999px;background:#6d28d9;color:#fff;font-size:13px}","JavaScript"],
+["Zebra table","tr:nth-child(even)","Style your required table so rows are easy to scan.","& table{border-collapse:collapse;width:100%}& th,& td{padding:6px 10px;text-align:left}& th{background:#6d28d9;color:#fff}& tr:nth-child(even){background:#f0e7ff}","<table><tr><th>Skill</th><th>Level</th></tr><tr><td>HTML</td><td>Good</td></tr><tr><td>CSS</td><td>Good</td></tr></table>"],
+["Round profile image","object-fit, 50% radius","Crops any photo into a neat avatar without distortion.","& img{width:80px;height:80px;object-fit:cover;border-radius:50%;border:3px solid #6d28d9}","<img alt=\"Placeholder profile\" src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='120'%3E%3Crect width='200' height='120' fill='%23a855f7'/%3E%3C/svg%3E\">"],
+["Keyframe animation","@keyframes","A subtle pulse draws attention to one call to action. Use sparingly.","&{animation:pulse 1.6s infinite;padding:14px;background:#f0e7ff;border-radius:8px;display:inline-block}@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}","Available for hire"],
+["Responsive layout","@media","Stack columns on phones. Resize your browser window to see it switch.","&{display:grid;grid-template-columns:1fr 2fr;gap:8px}& span{background:#e9d5ff;padding:8px;border-radius:6px}@media (max-width:480px){&{grid-template-columns:1fr}}","<span>Label</span><span>Content</span>"],
+["CSS variables","--custom-properties","Define colours once, then restyle the whole site by editing one line.","&{--accent:#6d28d9;border-left:6px solid var(--accent);padding:12px;background:#f0e7ff}","Change --accent to retheme"],
+["Sticky navigation","position:sticky","Keeps the menu visible while scrolling.","nav{position:sticky;top:0;background:#6d28d9;z-index:10}",""]
+];
+function pretty(s){var o="",d=0,i,c,p="  ";for(i=0;i<s.length;i++){c=s[i];if(c=="{"){d++;o+=" {\n"+p.repeat(d)}else if(c=="}"){d--;o=o.replace(/\s+$/,"")+"\n"+p.repeat(d)+"}\n"+p.repeat(d)}else if(c==";"){o+=";\n"+p.repeat(d)}else o+=c}return o.replace(/ +\n/g,"\n").trim()}
+function renderTech(){
+ var h='<h2>Styling techniques</h2><p class="lead">Fifteen ways to change a template’s CSS, each with a live demo and copy-ready code.</p>';
+ h+='<div class="note"><b>Remember:</b> the brief wants changes marked in HTML comments. Example:<pre>&lt;!-- CHANGED: replaced &lt;div class="skills"&gt; with &lt;section&gt; for semantics --&gt;</pre></div><div class="grid">';
+ var st="";
+ TECH.forEach(function(t,i){
+  var sel="#dm"+i;st+=t[3].replace(/&/g,sel);
+  h+='<div class="card"><h3 style="margin:0">'+(i+1)+'. '+t[0]+'</h3><span class="band" style="font-size:12px">'+t[1]+'</span><p>'+t[2]+'</p>'+(t[4]?'<div class="stage"><div id="dm'+i+'">'+t[4]+'</div></div>':'')+'<pre><code data-i="'+i+'"></code></pre><button class="btn ghost" data-copy="'+i+'">Copy CSS</button></div>';
+ });
+ var el=document.getElementById("tech");el.innerHTML='<style>'+st+'</style>'+h+'</div>';
+ el.querySelectorAll("code[data-i]").forEach(function(c){c.textContent=pretty(TECH[c.dataset.i][3].replace(/&/g,".your-class"))});
+}
+
+/* ---------- Style Lab ---------- */
+var LAB={acc:"#6d28d9",font:"Georgia,serif",rad:14,pad:20,h:26,sh:true,lay:"1fr",fill:true};
+function labCss(){
+ var L=LAB;return ".cv {\n  font-family: "+L.font+";\n  display: grid;\n  grid-template-columns: "+L.lay+";\n  gap: "+L.pad+"px;\n  padding: "+L.pad+"px;\n  border-radius: "+L.rad+"px;\n"+(L.sh?"  box-shadow: 0 10px 30px rgba(0,0,0,.18);\n":"")+"}\n.cv header {\n  grid-column: 1 / -1;\n  display: flex;\n  align-items: center;\n  gap: 14px;\n  padding: 14px;\n  border-radius: "+L.rad+"px;\n"+(L.fill?"  background: "+L.acc+";\n  color: #fff;\n":"  border-bottom: 3px solid "+L.acc+";\n")+"}\n.cv h3 {\n  margin: 0;\n  font-size: "+L.h+"px;\n}\n.cv h4 {\n  color: "+L.acc+";\n  border-bottom: 2px solid "+L.acc+";\n}\n.cv li {\n  display: inline-block;\n  background: "+L.acc+";\n  color: #fff;\n  padding: 2px 10px;\n  border-radius: 99px;\n  margin: 2px;\n}";
+}
+function renderLab(){
+ var h='<h2>Style Lab</h2><p class="lead">Change the controls and watch a mini CV restyle. The CSS underneath is yours to copy into style.css.</p><div class="lab"><div class="card ctl">'+
+ '<label>Accent colour<input type="color" id="l-acc" value="'+LAB.acc+'"></label>'+
+ '<label>Font<select id="l-font"><option value="Georgia,serif">Georgia (serif)</option><option value="\'Segoe UI\',system-ui,sans-serif">System sans</option><option value="\'Trebuchet MS\',sans-serif">Trebuchet</option><option value="\'Courier New\',monospace">Courier (mono)</option></select></label>'+
+ '<label>Corner radius <output></output><input type="range" id="l-rad" min="0" max="30" value="'+LAB.rad+'"></label>'+
+ '<label>Spacing <output></output><input type="range" id="l-pad" min="8" max="40" value="'+LAB.pad+'"></label>'+
+ '<label>Name size <output></output><input type="range" id="l-h" min="18" max="40" value="'+LAB.h+'"></label>'+
+ '<label>Layout<select id="l-lay"><option value="1fr">One column</option><option value="1fr 1fr">Two columns</option><option value="1fr 2fr">Sidebar + main</option></select></label>'+
+ '<label><input type="checkbox" id="l-sh" checked> Shadow</label><label><input type="checkbox" id="l-fill" checked> Filled header</label></div>'+
+ '<div><div class="stage"><style id="labstyle"></style><article class="cv"><header><span style="width:48px;height:48px;border-radius:50%;background:#e9d5ff;display:inline-block"></span><div><h3>Alex Morgan</h3><small>Junior Web Developer</small></div></header><section><h4>Profile</h4><p>Curious student building accessible, standards-based websites.</p></section><section><h4>Skills</h4><ul style="padding:0;list-style:none"><li>HTML5</li><li>CSS3</li><li>Git</li></ul></section></article></div>'+
+ '<pre><code id="labcode"></code></pre><button class="btn" id="labcopy">Copy CSS</button> <a class="btn ghost" href="'+U+'webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">Check your colour contrast ↗</a></div></div>';
+ document.getElementById("lab").innerHTML=h;
+ document.getElementById("l-font").value=LAB.font;document.getElementById("l-lay").value=LAB.lay;
+ labUpdate();
+}
+function labUpdate(){
+ var c=labCss();document.getElementById("labstyle").textContent=c;document.getElementById("labcode").textContent=c;
+ document.querySelectorAll("#lab .ctl input[type=range]").forEach(function(r){r.parentNode.querySelector("output").textContent=r.value+"px"});
+}
+
+/* ---------- Required elements ---------- */
+var EL=[
+["header","Branding and navigation: name, job title, contact links.","<header>\n  <h1>Alex Morgan</h1>\n  <p>Junior Web Developer</p>\n</header>"],
+["nav","The main menu. Use anchor links to your sections.","<nav aria-label=\"Main\">\n  <a href=\"#profile\">Profile</a>\n  <a href=\"#skills\">Skills</a>\n</nav>"],
+["main","The one primary content area. Skip-link friendly.","<main>\n  <!-- sections go here -->\n</main>"],
+["section","A themed group with its own heading: Education, Skills, Experience.","<section id=\"education\">\n  <h2>Education</h2>\n</section>"],
+["article","A self-contained item, such as one job or project.","<article>\n  <h3>Web Intern at Studio X</h3>\n  <p><time>Jun 2025 – Sep 2025</time></p>\n</article>"],
+["aside","Supplementary details such as languages or interests.","<aside>\n  <h2>Languages</h2>\n  <p>English, French</p>\n</aside>"],
+["footer","Contact details and copyright.","<footer>\n  <p>© 2026 Alex Morgan · alex@example.com</p>\n</footer>"],
+["table","Tabular data only: a skills matrix or qualifications.","<table>\n  <caption>Skills</caption>\n  <tr><th scope=\"col\">Skill</th><th scope=\"col\">Level</th></tr>\n  <tr><td>HTML</td><td>Confident</td></tr>\n</table>"],
+["img","Always include alt text. Keep files in images/.","<img src=\"images/profile.jpg\" alt=\"Portrait of Alex Morgan\" width=\"120\">"]
+];
+var SKEL="<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Alex Morgan | Online CV</title>\n  <link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n  <header>…</header>\n  <nav>…</nav>\n  <main>\n    <section id=\"profile\">…</section>\n    <section id=\"experience\"><article>…</article></section>\n    <section id=\"skills\"><table>…</table></section>\n    <aside>…</aside>\n  </main>\n  <footer>…</footer>\n</body>\n</html>";
+function renderElems(){
+ var h='<h2>Required elements</h2><p class="lead">Every element the brief asks for, what it is for, and a snippet to adapt.</p><div class="grid">';
+ EL.forEach(function(e,i){h+='<div class="card"><h3 style="margin:0">&lt;'+e[0]+'&gt;</h3><p>'+e[1]+'</p><pre><code data-e="'+i+'"></code></pre></div>'});
+ h+='</div><div class="card"><h3 style="margin:0">Starter skeleton and folder layout</h3><pre><code id="skel"></code></pre><pre><code>portfolio/\n├── index.html\n├── css/\n│   └── style.css\n└── images/\n    └── profile.jpg</code></pre><button class="btn ghost" id="skelcopy">Copy skeleton</button></div>';
+ var el=document.getElementById("elems");el.innerHTML=h;
+ el.querySelectorAll("code[data-e]").forEach(function(c){c.textContent=EL[c.dataset.e][2]});
+ document.getElementById("skel").textContent=SKEL;
+}
+
+/* ---------- Tabs, events ---------- */
+var TABS=[["score","Score"],["check","Upload & Check"],["comm","Commentary"],["play","Playground"],["quiz","Quiz"],["lab","Style Lab"],["tech","Techniques"],["elems","Elements"],["tests","Tests"]];
+function show(id){TABS.forEach(function(t){document.getElementById(t[0]).hidden=t[0]!=id});document.querySelectorAll("#tabs button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.t==id)})}
+function copy(t,btn){try{navigator.clipboard.writeText(t);var o=btn.textContent;btn.textContent="Copied ✓";setTimeout(function(){btn.textContent=o},1200)}catch(e){}}
+document.getElementById("tabs").innerHTML=TABS.map(function(t){return'<button role="tab" data-t="'+t[0]+'">'+t[1]+'</button>'}).join("");
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button");if(!b)return;
+ if(b.dataset.t)show(b.dataset.t);
+ else if(b.id=="reset"){S={};save();renderScore();renderTests()}
+ else if(b.dataset.copy)copy(pretty(TECH[b.dataset.copy][3].replace(/&/g,".your-class")),b);
+ else if(b.id=="labcopy")copy(labCss(),b);
+ else if(b.id=="skelcopy")copy(SKEL,b);
+});
+document.addEventListener("change",function(e){
+ var t=e.target;
+ if(t.dataset.id){S[t.dataset.id]=t.checked;save();renderScore();renderTests();return}
+ if(t.id=="l-acc")LAB.acc=t.value;else if(t.id=="l-font")LAB.font=t.value;else if(t.id=="l-lay")LAB.lay=t.value;
+ else if(t.id=="l-sh")LAB.sh=t.checked;else if(t.id=="l-fill")LAB.fill=t.checked;
+});
+document.addEventListener("input",function(e){
+ var t=e.target;if(t.id=="l-rad")LAB.rad=+t.value;else if(t.id=="l-pad")LAB.pad=+t.value;else if(t.id=="l-h")LAB.h=+t.value;
+ else if(t.id=="l-acc")LAB.acc=t.value;else if(t.id=="l-font")LAB.font=t.value;else if(t.id=="l-lay")LAB.lay=t.value;
+ else if(t.id=="l-sh")LAB.sh=t.checked;else if(t.id=="l-fill")LAB.fill=t.checked;else return;
+ if(t.closest("#lab"))labUpdate();
+});
+/* ---------- Upload & Check: reads your files in the browser only; nothing is uploaded anywhere ---------- */
+var LAST=null;
+function cnt(a,s){var n=0;a.forEach(function(r){if(r.test(s))n++});return n}
+function analyse(H,K){
+ var doc=new DOMParser().parseFromString(H,"text/html"),C=[];
+ var hc=H.match(/<!--[\s\S]*?-->/g)||[],cc=K.match(/\/\*[\s\S]*?\*\//g)||[],chg=/chang|modif|edit|replac|updat|added|adapt|custom/i;
+ var hch=hc.filter(function(c){return chg.test(c)}).length,cch=cc.filter(function(c){return chg.test(c)}).length;
+ var text=(doc.body?doc.body.textContent:"").toLowerCase(),q=function(s){return doc.querySelector(s)};
+ var all=K+[].map.call(doc.querySelectorAll("style"),function(s){return s.textContent}).join("\n");
+ var imgs=[].slice.call(doc.querySelectorAll("img")),sem=doc.querySelectorAll("header,nav,main,section,article,aside,footer").length,divs=doc.querySelectorAll("div").length;
+ var ids=[].map.call(doc.querySelectorAll("[id]"),function(e){return e.id}),nl=[].map.call(doc.querySelectorAll("nav a[href^='#']"),function(a){return a.getAttribute("href").slice(1)});
+ var hl=[].map.call(doc.querySelectorAll("h1,h2,h3,h4,h5,h6"),function(h){return +h.tagName[1]}),jump=hl.some(function(l,i){return i&&l-hl[i-1]>1});
+ function add(id,label,ok,fix){C.push({id:id,label:label,ok:!!ok,fix:fix})}
+ add("c1","CV covers education, skills, experience, projects, achievements",cnt([/educat/,/skill/,/experience|employment/,/project/,/achievement|award/],text)>=4,"Add a clearly headed section for each: education, skills, experience, projects, achievements.");
+ add("c5","Original author acknowledged",/reference|credit|acknowledg|original (author|template)|template (by|from)|adapted from|based on/i.test(H),"Add a References section (and a comment at the top of your code) crediting the template author.");
+ [["h1","header"],["h2","nav"],["h3","main"],["h5","article"],["h6","aside"],["h7","footer"]].forEach(function(p){add(p[0],"<"+p[1]+"> used",q(p[1]),"Add a <"+p[1]+"> element where it fits the content.")});
+ add("h4","At least 3 <section> elements",doc.querySelectorAll("section").length>=3,"Wrap education, skills and experience each in a <section> with a heading.");
+ add("h8","<table> with header cells",q("table th"),"Add a <table> (e.g. skills matrix) using <th> for headings.");
+ add("h9","<img> present and every image has alt text",imgs.length>0&&imgs.every(function(i){return (i.getAttribute("alt")||"").trim()}),"Add an <img> and give each a descriptive alt attribute.");
+ add("m1","Evidence you changed both HTML and CSS",hch>0&&cch>0,"Add comments like <!-- CHANGED: ... --> and /* CHANGED: ... */ wherever you modified the template.");
+ add("m2","At least 3 HTML comments marking changes",hch>=3,"Mark each modification with an HTML comment (found "+hch+").");
+ add("m3","Good comment coverage (6+ HTML, 4+ CSS)",hc.length>=6&&cc.length>=4,"Comment each major block. Found "+hc.length+" HTML and "+cc.length+" CSS comments.");
+ add("m4","Links css/style.css and uses images/ folder",/css\/style\.css/.test(H)&&(!imgs.length||imgs.some(function(i){return /images\//.test(i.getAttribute("src")||"")})),"Use href=\"css/style.css\" and src=\"images/...\".");
+ var Q=[];function qa(label,ok,fix){Q.push({label:label,ok:!!ok,fix:fix})}
+ qa("<!DOCTYPE html> declared",/^\s*(<!--[\s\S]*?-->\s*)*<!doctype html>/i.test(H),"Start the file with <!DOCTYPE html>.");
+ qa("lang attribute on <html>",doc.documentElement.getAttribute("lang"),"Use <html lang=\"en\">.");
+ qa("Meaningful <title>",doc.title&&!/document|untitled/i.test(doc.title),"Set a title such as “Your Name | Online CV”.");
+ qa("Viewport meta tag",q("meta[name=viewport]"),"Add the viewport meta tag for mobile.");
+ qa("Exactly one <h1>",doc.querySelectorAll("h1").length==1,"Use a single <h1> (your name).");
+ qa("Heading levels do not skip",!jump,"Don’t jump from h2 to h4.");
+ qa("Semantic tags outnumber <div>s",sem>=divs,"Replace generic <div>s with semantic elements. Found "+sem+" semantic vs "+divs+" divs.");
+ qa("Few inline styles (3 or fewer)",doc.querySelectorAll("[style]").length<=3,"Move inline style=\"\" rules into style.css.");
+ qa("Template placeholders removed",!/lorem ipsum|joe bloggs|your name here/i.test(text),"Replace every placeholder with your real content.");
+ qa("Contact details present",/@/.test(text)||q("a[href^='mailto:']"),"Add an email or contact link in header/footer.");
+ qa("Nav links point to real ids",nl.length>0&&nl.every(function(n){return ids.indexOf(n)>-1}),"Each nav #link needs a matching id on a section.");
+ qa("CSS uses flexbox or grid",/display\s*:\s*(flex|grid)/.test(all),"Use flexbox or grid for layout.");
+ qa("Responsive @media query",/@media/.test(all),"Add an @media rule so it works on phones.");
+ qa("Hover/transition effect",/:hover|transition/.test(all),"Add a :hover and transition on links or cards.");
+ qa("CSS custom properties (variables)",/--[\w-]+\s*:/.test(all),"Define colours as variables on :root.");
+ return {C:C,Q:Q,stats:{sem:sem,hc:hc.length,cc:cc.length,divs:divs}};
+}
+function line(c){return '<div class="chk"><span class="'+(c.ok?"ok":"bad")+'">'+(c.ok?"✔":"✘")+'</span><span>'+c.label.replace(/</g,"&lt;")+(c.ok?"":"<small>"+c.fix.replace(/</g,"&lt;")+"</small>")+'</span></div>'}
+function renderCheck(){
+ var h='<h2>Upload &amp; Check</h2><p class="lead">Drop your <code class="t">index.html</code> and <code class="t">style.css</code> here. Files are read inside your browser only and never sent anywhere.</p>';
+ h+='<div class="drop" id="drop"><p style="margin:0 0 8px"><b>Drag your files here</b> or choose them</p><input type="file" id="cvfile" accept=".html,.htm,.css" multiple></div><div id="res"></div>';
+ document.getElementById("check").innerHTML=h;
+}
+function handleFiles(fl){
+ var H="",K="",names=[],ps=[].map.call(fl,function(f){return f.text().then(function(t){names.push(f.name);if(/\.css$/i.test(f.name))K+=t+"\n";else if(/\.html?$/i.test(f.name))H+=t+"\n"})});
+ Promise.all(ps).then(function(){
+  var r=document.getElementById("res");
+  if(!H){r.innerHTML='<div class="note">Please include your index.html file.</div>';return}
+  var a=analyse(H,K);LAST=a;renderComm();
+  var got=0,tot=0;a.C.forEach(function(c){var it=ITEMS.filter(function(i){return i[0]==c.id})[0];tot+=it[2];if(c.ok)got+=it[2]});
+  var qg=a.Q.filter(function(x){return x.ok}).length,miss=a.C.filter(function(c){return !c.ok}).concat(a.Q.filter(function(x){return !x.ok}));
+  var o='<div class="card"><div class="big">'+got+'<small style="font-size:22px">/'+tot+'</small></div> <span class="band">'+bandOf(Math.round(got/tot*100))+' (code only)</span><p>Auto-detected rubric points from <b>'+names.join(", ")+'</b>'+(K?'':' — no CSS file uploaded, so CSS checks may show as missed')+'. Quality checks passed: <b>'+qg+'/'+a.Q.length+'</b>.</p>';
+  o+='<div class="note">Can’t be checked from files: validator results, UCL publishing, the commentary itself and your reflection. Tick those on the Score tab.</div><button class="btn" id="apply">Add detected items to my Score</button></div>';
+  o+='<div class="grid"><div class="card"><h3 style="margin:0">Rubric checks</h3>'+a.C.map(line).join("")+'</div><div class="card"><h3 style="margin:0">Quality checks</h3>'+a.Q.map(line).join("")+'</div></div>';
+  o+='<div class="card"><h3 style="margin:0">Fix first ('+miss.length+' missed)</h3><ol>'+miss.slice(0,6).map(function(c){return"<li>"+c.fix.replace(/</g,"&lt;")+"</li>"}).join("")+'</ol></div>';
+  r.innerHTML=o;
+ });
+}
+
+/* ---------- Commentary template: 750-word blueprint ---------- */
+var COMM=[
+["1. Introduction and aims",70,"State what you built, the template you adapted (with author), and your live URL.","For this portfolio I adapted [template name] by [author] into an online CV hosted at www.homepages.ucl.ac.uk/~[xxxxxx]. My aim was to [aim], using {sem} semantic HTML5 elements and a modified stylesheet."],
+["2. Prior knowledge vs new knowledge",110,"Compare before and after with specifics, not generalities.","Before this module I [what you knew, e.g. only used <div>s and inline styles]. By the end I could [new skill]. The clearest change was [example from your code], which taught me [insight]."],
+["3. A challenge and how you solved it",140,"Claim, evidence, so-what. Include a short code extract or screenshot.","My biggest challenge was [problem]. I noticed it when [evidence, e.g. layout broke at 400px]. I tried [attempt 1], which failed because [reason], then [solution], using [tool/technique]. Evidence: [code extract / Figure 1]. This showed me that [so-what]."],
+["4. Validation and testing",150,"Name the tools, the errors found, the fixes, and the before/after result.","I validated my HTML with the W3C Markup Validator, which reported [number] errors, including [example]. I fixed these by [fix] and re-ran it to reach [result] (Figure 2). The W3C CSS Validator reported [result]. I also tested accessibility with WAVE and responsiveness with Chrome DevTools/Lighthouse, which led me to [change]. Remaining warnings: [honest note]."],
+["5. Successes, failures and how it felt",100,"Be honest. One failure with a lesson beats a list of wins. Show emotion in a sentence.","My most successful decision was [decision] because [evidence]. My least successful was [failure], which cost me [time/effect]. I felt [frustrated/proud/surprised] when [moment], and it changed how I [approach]."],
+["6. Future improvements",90,"Specific, credible, linked to what you saw in testing.","Next I would [improvement 1] to address [problem found in testing], and [improvement 2], such as adding [feature, e.g. a print stylesheet, JavaScript dark mode, better contrast]. I documented [n] changes in {hc} HTML comments and {cc} CSS comments to make this easier."],
+["7. Professional application and conclusion",90,"Connect skills to future study or work, and show how your view of web development changed.","These skills (semantic markup, validation, responsive CSS, documentation) will help me [future module/job/portfolio]. I used to see web development as [old view]; now I see it as [new view]. References: [list template author and any sources]."]
+];
+var DR={};try{DR=JSON.parse(localStorage.getItem("cvdraft")||"{}")}catch(e){}
+function wc(s){return s.trim()?s.trim().split(/\s+/).length:0}
+function renderComm(){
+ var h='<h2>Commentary template (750 words)</h2><p class="lead">Seven paragraphs with word budgets that add up to 750. Press <b>Use starter</b>, then replace every [bracket] with your own evidence. Drafts save in this browser.</p>';
+ h+='<div class="note"><b>What a first looks like:</b> original critical analysis (not description), a detailed prior-vs-new comparison, honest failures, emotion, evidence from your site and validators, and a plan for future work. Check your module guidance on whether figures, captions and references count toward 750.</div>';
+ COMM.forEach(function(c,i){h+='<div class="card"><h3 style="margin:0">'+c[0]+' <span class="wc" data-w="'+i+'"></span></h3><p class="lead" style="margin:4px 0 8px">'+c[2]+'</p><textarea data-c="'+i+'" placeholder="'+c[3].replace(/"/g,"&quot;").replace(/\{\w+\}/g,"[n]")+'">'+(DR[i]||"").replace(/</g,"&lt;")+'</textarea><button class="btn ghost" data-s="'+i+'">Use starter</button></div>'});
+ h+='<div class="card"><b>Total: <span id="wtot"></span> / 750 words</b> <button class="btn" id="commcopy">Copy full draft</button><h3>First-class self-check</h3>'+["Every claim is backed by evidence from my site or a validator report","I compared prior and new knowledge with a specific example","I described a real failure and what I changed","I showed emotion in at least one sentence","I included before and after validator screenshots","I projected my skills into future academic or professional work","My URL and references are included"].map(function(t){return'<label class="row"><input type="checkbox"><span>'+t+'</span></label>'}).join("")+'</div>';
+ document.getElementById("comm").innerHTML=h;wcUpdate();
+}
+function wcUpdate(){
+ var t=0;document.querySelectorAll("#comm textarea").forEach(function(a){var n=wc(a.value),i=a.dataset.c;t+=n;var e=document.querySelector('[data-w="'+i+'"]');e.textContent=n+" / "+COMM[i][1]+" words";e.style.color=n>COMM[i][1]*1.15?"var(--bad)":n>=COMM[i][1]*.85?"var(--ok)":"var(--muted)"});
+ document.getElementById("wtot").textContent=t;
+}
+document.addEventListener("input",function(e){var a=e.target;if(a.dataset&&a.dataset.c!==undefined){DR[a.dataset.c]=a.value;try{localStorage.setItem("cvdraft",JSON.stringify(DR))}catch(x){}wcUpdate()}});
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button");if(!b)return;
+ if(b.dataset.s!==undefined){var st=LAST?LAST.stats:{},t=COMM[b.dataset.s][3].replace(/\{(\w+)\}/g,function(m,k){return st[k]!==undefined?st[k]:"[n]"}),a=document.querySelector('textarea[data-c="'+b.dataset.s+'"]');a.value=t;DR[b.dataset.s]=t;try{localStorage.setItem("cvdraft",JSON.stringify(DR))}catch(x){}wcUpdate()}
+ else if(b.id=="commcopy")copy(COMM.map(function(c,i){return c[0]+"\n"+(DR[i]||"")}).join("\n\n"),b);
+ else if(b.id=="apply"&&LAST){LAST.C.forEach(function(c){if(c.ok)S[c.id]=true});save();renderScore();renderTests();show("score")}
+});
+document.addEventListener("change",function(e){if(e.target.id=="cvfile")handleFiles(e.target.files)});
+document.addEventListener("dragover",function(e){if(e.target.closest&&e.target.closest("#drop"))e.preventDefault()});
+document.addEventListener("drop",function(e){if(e.target.closest&&e.target.closest("#drop")){e.preventDefault();handleFiles(e.dataTransfer.files)}});
+/* ---------- Toast ---------- */
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.className="on";clearTimeout(window.TT);window.TT=setTimeout(function(){t.className=""},2200)}
+
+/* ---------- Playground: edit HTML + CSS and see it live (sandboxed, no scripts) ---------- */
+var PH="<header>\n  <h1>Alex Morgan</h1>\n  <p>Junior Web Developer</p>\n</header>\n<nav><a href=\"#p\">Profile</a> <a href=\"#s\">Skills</a></nav>\n<main>\n  <section id=\"p\">\n    <h2>Profile</h2>\n    <p>Curious student building accessible websites.</p>\n  </section>\n  <section id=\"s\">\n    <h2>Skills</h2>\n    <article>HTML5</article>\n    <article>CSS3</article>\n    <article>Git</article>\n  </section>\n</main>\n<footer>© 2026 Alex Morgan</footer>";
+var PC="body { font-family: Georgia, serif; margin: 0; }\nheader { padding: 20px; }\nnav, main, footer { padding: 10px 20px; }\n/* Try: change colours, add padding, make the articles a grid */";
+var PRE={
+ purple:"body { font-family: Georgia, serif; margin: 0; background: #faf7ff; color: #2a1650; }\nheader { padding: 24px; background: linear-gradient(135deg,#6d28d9,#c084fc); color: #fff; }\nnav { padding: 10px 24px; background: #4c1d95; }\nnav a { color: #fff; margin-right: 14px; }\nmain, footer { padding: 10px 24px; }\nh2 { color: #6d28d9; border-bottom: 2px solid #c084fc; }",
+ dark:"body { font-family: system-ui, sans-serif; margin: 0; background: #150a2b; color: #f3ecff; }\nheader { padding: 24px; border-bottom: 3px solid #a78bfa; }\nnav a { color: #c084fc; margin: 0 14px; }\nmain, footer { padding: 10px 24px; }\nh2 { color: #a78bfa; }",
+ cards:"body { font-family: system-ui, sans-serif; margin: 0; background: #f5f0ff; }\nheader { padding: 24px; background: #6d28d9; color: #fff; }\nnav, footer { padding: 10px 24px; }\nsection { padding: 10px 24px; }\n#s { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }\n#s h2 { grid-column: 1 / -1; }\narticle { background: #fff; padding: 16px; border-radius: 12px; box-shadow: 0 6px 16px rgba(109,40,217,.25); transition: transform .2s; }\narticle:hover { transform: translateY(-4px); }"
+};
+function renderPlay(){
+ document.getElementById("play").innerHTML='<h2>Playground</h2><p class="lead">Edit the code and the preview updates as you type. Try a preset, then break it and fix it.</p><div class="card"><b>Presets:</b> <button class="btn ghost" data-pre="purple">Purple theme</button> <button class="btn ghost" data-pre="dark">Dark mode</button> <button class="btn ghost" data-pre="cards">Card grid</button> <button class="btn ghost" data-pre="reset">Reset</button></div><div class="grid"><div><b>HTML</b><textarea class="code" id="p-h" spellcheck="false"></textarea></div><div><b>CSS</b><textarea class="code" id="p-c" spellcheck="false"></textarea></div></div><h3>Live preview</h3><iframe class="pv" id="p-f" sandbox title="Live preview"></iframe><div class="note" style="margin-top:12px"><b>Challenges:</b> 1) Make the nav a flex row. 2) Give each article a border-radius. 3) Add an HTML comment saying what you changed.</div>';
+ document.getElementById("p-h").value=PH;document.getElementById("p-c").value=PC;playUpdate();
+}
+function playUpdate(){document.getElementById("p-f").srcdoc="<style>"+document.getElementById("p-c").value+"</style>"+document.getElementById("p-h").value}
+document.addEventListener("input",function(e){if(e.target.id=="p-h"||e.target.id=="p-c"){clearTimeout(window.PT);window.PT=setTimeout(playUpdate,200)}});
+document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!b.dataset.pre)return;document.getElementById("p-c").value=b.dataset.pre=="reset"?PC:PRE[b.dataset.pre];if(b.dataset.pre=="reset")document.getElementById("p-h").value=PH;playUpdate();toast("Preset applied")});
+
+/* ---------- Snippet library for the Playground: [category, name, html, css] ---------- */
+var SN=[
+["Gradients","Sunset linear","<div class='g1'>Sunset gradient</div>",".g1{padding:50px;color:#fff;font:700 24px system-ui;border-radius:12px;background:linear-gradient(120deg,#6d28d9,#db2777,#f59e0b)}"],
+["Gradients","Radial glow","<div class='g2'>Radial glow</div>",".g2{padding:50px;color:#fff;font:700 24px system-ui;border-radius:12px;background:radial-gradient(circle at 30% 30%,#c084fc,#4c1d95 70%)}"],
+["Gradients","Conic colour wheel","<div class='g3'></div>",".g3{width:160px;height:160px;border-radius:50%;background:conic-gradient(#6d28d9,#c084fc,#f0abfc,#6d28d9)}"],
+["Gradients","Gradient text","<h1 class='g4'>Gradient text</h1>",".g4{font:800 44px system-ui;background:linear-gradient(90deg,#6d28d9,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}"],
+["Gradients","Animated gradient","<div class='g5'>Moving colours</div>",".g5{padding:50px;color:#fff;font:700 24px system-ui;border-radius:12px;background:linear-gradient(120deg,#6d28d9,#ec4899,#38bdf8,#6d28d9);background-size:300% 300%;animation:move 6s ease infinite}@keyframes move{50%{background-position:100% 50%}}"],
+["Gradients","Gradient border","<div class='g6'><div>Gradient border card</div></div>",".g6{padding:3px;border-radius:14px;background:linear-gradient(135deg,#6d28d9,#ec4899)}.g6 div{background:#fff;padding:20px;border-radius:11px;font-family:system-ui}"],
+["Gradients","Glass card","<div class='gl'><div class='glass'>Glassmorphism</div></div>",".gl{padding:40px;background:linear-gradient(135deg,#6d28d9,#ec4899)}.glass{padding:24px;color:#fff;font:600 20px system-ui;border-radius:16px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.4)}"],
+["Animations","Fade-in up cards","<div class='cs'><p>One</p><p>Two</p><p>Three</p></div>",".cs p{padding:16px;margin:8px 0;background:#f0e7ff;border-radius:10px;font-family:system-ui;animation:up .8s both}.cs p:nth-child(2){animation-delay:.2s}.cs p:nth-child(3){animation-delay:.4s}@keyframes up{from{opacity:0;transform:translateY(20px)}}"],
+["Animations","Bouncing ball","<div class='ball'></div>",".ball{width:40px;height:40px;border-radius:50%;background:#6d28d9;margin:20px;animation:bounce .8s ease-in-out infinite alternate}@keyframes bounce{to{transform:translateY(80px)}}"],
+["Animations","Loading spinner","<div class='spin'></div>",".spin{width:44px;height:44px;margin:20px;border:5px solid #e9d5ff;border-top-color:#6d28d9;border-radius:50%;animation:rot 1s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}"],
+["Animations","Typing text","<p class='type'>Hello, I am a web developer</p>",".type{width:27ch;overflow:hidden;white-space:nowrap;border-right:3px solid #6d28d9;font:18px monospace;animation:typ 3s steps(27) infinite alternate}@keyframes typ{from{width:0}}"],
+["Animations","Pulse button","<button class='pb'>Hire me</button>",".pb{padding:12px 24px;border:0;border-radius:99px;background:#6d28d9;color:#fff;font:600 16px system-ui;animation:pls 1.5s infinite}@keyframes pls{0%{box-shadow:0 0 0 0 rgba(109,40,217,.6)}100%{box-shadow:0 0 0 18px rgba(109,40,217,0)}}"],
+["Animations","3D flip card","<div class='flip'><div><span class='f1'>Front</span><span class='f2'>Back</span></div></div>",".flip{width:180px;height:110px;perspective:600px;margin:20px}.flip div{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}.flip:hover div{transform:rotateY(180deg)}.flip span{position:absolute;inset:0;display:grid;place-items:center;backface-visibility:hidden;border-radius:12px;color:#fff;font-family:system-ui}.f1{background:#6d28d9}.f2{background:#ec4899;transform:rotateY(180deg)}"],
+["Animations","Animated skill bars","<div class='sk'>HTML<div class='bar'><i style='--w:90%'></i></div>CSS<div class='bar'><i style='--w:75%'></i></div>Git<div class='bar'><i style='--w:55%'></i></div></div>",".sk{font-family:system-ui;max-width:360px}.bar{background:#ede9fe;border-radius:9px;height:14px;margin:4px 0 12px}.bar i{display:block;height:100%;width:var(--w);border-radius:9px;background:linear-gradient(90deg,#6d28d9,#c084fc);animation:fill 1.6s}@keyframes fill{from{width:0}}"],
+["Tables","Purple zebra","<table class='t1'><caption>Skills</caption><tr><th>Skill</th><th>Level</th></tr><tr><td>HTML</td><td>Advanced</td></tr><tr><td>CSS</td><td>Advanced</td></tr><tr><td>Git</td><td>Beginner</td></tr></table>",".t1{border-collapse:collapse;width:100%;font-family:system-ui}.t1 th{background:#6d28d9;color:#fff;text-align:left}.t1 th,.t1 td{padding:10px 14px}.t1 tr:nth-child(even){background:#f0e7ff}.t1 caption{font-weight:700;padding:8px;text-align:left}"],
+["Tables","Hover rows","<table class='t2'><tr><th>Module</th><th>Grade</th></tr><tr><td>How the Web Works</td><td>In progress</td></tr><tr><td>Data Foundations</td><td>Merit</td></tr></table>",".t2{width:100%;border-collapse:separate;border-spacing:0 6px;font-family:system-ui}.t2 th{text-align:left;color:#6d28d9;padding:6px 14px}.t2 td{background:#faf7ff;padding:12px 14px}.t2 tr:hover td{background:#ede9fe}.t2 td:first-child{border-radius:10px 0 0 10px}.t2 td:last-child{border-radius:0 10px 10px 0}"],
+["Tables","Minimal lines","<table class='t3'><tr><th>Role</th><th>Year</th></tr><tr><td>Web Intern</td><td>2025</td></tr><tr><td>Tutor</td><td>2024</td></tr></table>",".t3{width:100%;border-collapse:collapse;font-family:Georgia,serif}.t3 th{text-align:left;border-bottom:2px solid #6d28d9;padding:8px}.t3 td{border-bottom:1px solid #e9d5ff;padding:8px}"],
+["Tables","Dark table","<table class='t4'><tr><th>Tool</th><th>Used for</th></tr><tr><td>VS Code</td><td>Editing</td></tr><tr><td>W3C Validator</td><td>Checking</td></tr></table>",".t4{width:100%;border-collapse:collapse;background:#1e1038;color:#f3ecff;font-family:system-ui;border-radius:10px;overflow:hidden}.t4 th{background:#4c1d95;text-align:left}.t4 th,.t4 td{padding:10px 14px}.t4 tr+tr td{border-top:1px solid #3a2766}"],
+["Folders","File tree","<ul class='tree'><li>portfolio<ul><li>index.html</li><li>css<ul><li>style.css</li></ul></li><li>images<ul><li>profile.jpg</li></ul></li></ul></li></ul>",".tree,.tree ul{list-style:none;margin:0;padding-left:22px;font:15px monospace}.tree li{padding:3px 0}.tree li::before{content:'📄 '}.tree li:has(ul)::before{content:'📁 '}.tree ul{border-left:1px dashed #a855f7;margin-left:8px}"],
+["Folders","Collapsible folders","<details open class='fd'><summary>portfolio/</summary><p>index.html</p><details class='fd'><summary>css/</summary><p>style.css</p></details><details class='fd'><summary>images/</summary><p>profile.jpg</p></details></details>",".fd{font:15px monospace;margin-left:14px}.fd>summary{cursor:pointer;color:#6d28d9;font-weight:700;padding:3px 0}.fd p{margin:2px 0 2px 18px}"],
+["Folders","Folder icon","<div class='folder'>images/</div>",".folder{width:170px;height:110px;margin:24px;background:#a855f7;border-radius:4px 12px 12px 12px;position:relative;color:#fff;padding:50px 14px 0;font:600 16px system-ui;box-shadow:0 8px 18px rgba(109,40,217,.3)}.folder::before{content:'';position:absolute;top:-14px;left:0;width:64px;height:18px;background:#a855f7;border-radius:8px 8px 0 0}"],
+["Navigation","Top bar","<nav class='n1'><a href='#'>Home</a><a href='#'>Skills</a><a href='#'>Projects</a><a href='#'>Contact</a></nav>",".n1{display:flex;gap:6px;background:#4c1d95;padding:10px 16px}.n1 a{color:#fff;text-decoration:none;font:600 15px system-ui;padding:8px 14px;border-radius:8px}.n1 a:hover{background:#7c3aed}"],
+["Navigation","Pill nav","<nav class='n2'><a class='on' href='#'>Home</a><a href='#'>Skills</a><a href='#'>Projects</a></nav>",".n2{display:inline-flex;gap:4px;padding:5px;background:#f0e7ff;border-radius:99px}.n2 a{padding:8px 18px;border-radius:99px;color:#6d28d9;text-decoration:none;font:600 14px system-ui}.n2 a.on,.n2 a:hover{background:#6d28d9;color:#fff}"],
+["Navigation","Sliding underline","<nav class='n3'><a href='#'>Home</a><a href='#'>Skills</a><a href='#'>Projects</a></nav>",".n3{display:flex;gap:24px;padding:14px}.n3 a{position:relative;color:#2a1650;text-decoration:none;font:600 15px system-ui}.n3 a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:3px;background:#a855f7;transition:width .3s}.n3 a:hover::after{width:100%}"],
+["Navigation","Logo left, links right","<header class='n4'><strong>Alex Morgan</strong><nav><a href='#'>About</a><a href='#'>Work</a><a href='#'>Contact</a></nav></header>",".n4{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:linear-gradient(90deg,#6d28d9,#a855f7);color:#fff;font-family:system-ui;position:sticky;top:0}.n4 a{color:#fff;margin-left:18px;text-decoration:none}"],
+["Navigation","Hamburger menu (CSS only)","<input type='checkbox' id='mt' hidden><label for='mt' class='bg'>☰ Menu</label><nav class='mm'><a href='#'>Home</a><a href='#'>Skills</a><a href='#'>Contact</a></nav>",".bg{display:inline-block;padding:10px 16px;background:#6d28d9;color:#fff;border-radius:8px;cursor:pointer;font-family:system-ui}.mm{display:none;flex-direction:column;width:180px;background:#f0e7ff;margin-top:6px;border-radius:8px}.mm a{padding:10px 14px;color:#4c1d95;text-decoration:none;font-family:system-ui}#mt:checked~.mm{display:flex}"],
+["Navigation","Dropdown on hover","<nav class='dd'><span>Projects ▾</span><div><a href='#'>Website</a><a href='#'>Data viz</a></div></nav>",".dd{position:relative;display:inline-block;font-family:system-ui}.dd span{display:block;padding:10px 16px;background:#6d28d9;color:#fff;border-radius:8px;cursor:pointer}.dd div{display:none;position:absolute;min-width:160px;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.2);border-radius:8px;overflow:hidden}.dd:hover div{display:block}.dd a{display:block;padding:10px 14px;color:#4c1d95;text-decoration:none}.dd a:hover{background:#f0e7ff}"],
+["Navigation","Breadcrumbs","<nav class='bc'><a href='#'>Home</a> / <a href='#'>Projects</a> / <span>Online CV</span></nav>",".bc{font:14px system-ui;color:#6b5b8c}.bc a{color:#6d28d9;text-decoration:none}.bc span{font-weight:700;color:#2a1650}"],
+["Layouts","Side nav + content","<div class='lay'><nav class='side'><a href='#'>Profile</a><a href='#'>Skills</a><a href='#'>Projects</a><a href='#'>Contact</a></nav><main><h1>Alex Morgan</h1><p>Content area next to a fixed-width side navigation.</p></main></div>",".lay{display:grid;grid-template-columns:200px 1fr;min-height:320px;font-family:system-ui}.side{background:#4c1d95;padding:18px;display:flex;flex-direction:column;gap:8px}.side a{color:#fff;text-decoration:none;padding:10px 12px;border-radius:8px}.side a:hover{background:#7c3aed}.lay main{padding:22px}"],
+["Layouts","Header, sidebar, main, aside, footer","<div class='hg'><header>Header</header><nav>Nav</nav><main>Main content</main><aside>Aside</aside><footer>Footer</footer></div>",".hg{display:grid;gap:8px;grid-template-areas:'h h h' 'n m a' 'f f f';grid-template-columns:140px 1fr 160px;font-family:system-ui;color:#fff}.hg>*{padding:18px;border-radius:8px}.hg header{grid-area:h;background:#6d28d9}.hg nav{grid-area:n;background:#a855f7}.hg main{grid-area:m;background:#7c3aed;min-height:120px}.hg aside{grid-area:a;background:#c084fc}.hg footer{grid-area:f;background:#4c1d95}"],
+["Layouts","Two-column CV (label + content)","<main class='cv2'><section><h2>Profile</h2><p>Short personal statement goes here.</p></section><section><h2>Experience</h2><article><h3>Web Intern</h3><p>Built and tested pages.</p></article></section></main>",".cv2{max-width:640px;font-family:system-ui}.cv2 section{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-top:1px solid #e9d5ff}.cv2 h2{margin:0;font-size:16px;font-style:italic;color:#d97706}.cv2 h3{margin:0}.cv2 p{margin:4px 0}"],
+["Layouts","Hero + 3 cards","<header class='hero'><h1>Hi, I am Alex</h1><p>Web developer in training</p></header><section class='cards'><article>HTML</article><article>CSS</article><article>Git</article></section>",".hero{padding:50px 24px;text-align:center;color:#fff;font-family:system-ui;background:linear-gradient(135deg,#6d28d9,#c084fc)}.hero h1{margin:0}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;padding:20px;font-family:system-ui}.cards article{padding:24px;text-align:center;border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(109,40,217,.2)}"],
+["Layouts","Profile sidebar + content","<div class='ps'><aside><div class='av'></div><h2>Alex Morgan</h2><p>alex@example.com</p></aside><main><h2>About</h2><p>Scrolling content sits beside a profile panel.</p></main></div>",".ps{display:grid;grid-template-columns:220px 1fr;font-family:system-ui;min-height:300px}.ps aside{background:#f0e7ff;padding:22px;text-align:center}.ps .av{width:90px;height:90px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,#6d28d9,#ec4899)}.ps main{padding:22px}"],
+["Layouts","Vertical timeline","<ol class='tl'><li><b>2026</b> Online CV project</li><li><b>2025</b> Web Intern</li><li><b>2024</b> Started BSc</li></ol>",".tl{list-style:none;margin:0;padding:0 0 0 24px;border-left:3px solid #a855f7;font-family:system-ui}.tl li{position:relative;padding:8px 0 14px}.tl li::before{content:'';position:absolute;left:-33px;top:12px;width:14px;height:14px;border-radius:50%;background:#6d28d9;border:3px solid #fff}"],
+["Layouts","Footer columns","<footer class='fc'><section><h3>Contact</h3><p>alex@example.com</p></section><section><h3>Links</h3><p>GitHub</p></section><section><h3>Legal</h3><p>© 2026 Alex</p></section></footer>",".fc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px;background:#1e1038;color:#e9defc;font-family:system-ui}.fc h3{margin:0 0 6px;color:#c084fc}"],
+["Buttons","Button set","<button class='b1'>Solid</button> <button class='b2'>Outline</button> <button class='b3'>Glow</button>","button{padding:11px 22px;border-radius:10px;font:600 15px system-ui;cursor:pointer;transition:.2s}.b1{background:#6d28d9;color:#fff;border:2px solid #6d28d9}.b2{background:transparent;color:#6d28d9;border:2px solid #6d28d9}.b2:hover{background:#6d28d9;color:#fff}.b3{background:#a855f7;color:#fff;border:2px solid #a855f7}.b3:hover{box-shadow:0 0 20px #c084fc}"]
+];
+var SC="All";
+function libList(c){
+ SC=c;var cs=["All"];SN.forEach(function(s){if(cs.indexOf(s[0])<0)cs.push(s[0])});
+ var h='<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">'+cs.map(function(x){return'<button class="btn'+(x==c?'':' ghost')+'" data-cat="'+x+'">'+x+'</button>'}).join("")+'</div><div class="grid">';
+ SN.forEach(function(s,i){if(c=="All"||s[0]==c)h+='<div class="card" style="margin:0"><span class="band" style="font-size:12px">'+s[0]+'</span><h4 style="margin:6px 0">'+s[1]+'</h4><button class="btn" data-sn="'+i+'">Load</button> <button class="btn ghost" data-sa="'+i+'">Add</button></div>'});
+ document.getElementById("snlist").innerHTML=h+'</div>';
+}
+function renderLib(){
+ document.querySelector("#play .card").insertAdjacentHTML("afterend",'<div class="card"><h3 style="margin:0">Snippet library ('+SN.length+')</h3><p class="lead" style="margin:4px 0 10px"><b>Load</b> replaces the playground. <b>Add</b> stacks the snippet onto what you already have.</p><div id="snlist"></div></div>');
+ libList("All");
+}
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button");if(!b)return;
+ if(b.dataset.cat)libList(b.dataset.cat);
+ else if(b.dataset.sn!==undefined||b.dataset.sa!==undefined){
+  var add=b.dataset.sa!==undefined,s=SN[add?b.dataset.sa:b.dataset.sn],H=document.getElementById("p-h"),C=document.getElementById("p-c");
+  H.value=add?H.value+"\n"+s[2]:s[2];C.value=add?C.value+"\n"+pretty(s[3]):pretty(s[3]);playUpdate();
+  toast((add?"Added: ":"Loaded: ")+s[1]);document.getElementById("p-f").scrollIntoView({behavior:"smooth",block:"center"});
+ }
+});
+
+/* ---------- Quiz ---------- */
+var QZ=[
+["Which element holds the main navigation menu?",["&lt;menu&gt;","&lt;nav&gt;","&lt;div class='nav'&gt;","&lt;aside&gt;"],1,"&lt;nav&gt; tells browsers and screen readers this is the main navigation."],
+["How many &lt;main&gt; elements should a page have?",["One","One per section","As many as needed","None"],0,"A page has a single primary content area."],
+["Best element for one job entry that could stand alone?",["&lt;article&gt;","&lt;span&gt;","&lt;aside&gt;","&lt;footer&gt;"],0,"An &lt;article&gt; is independent, self-contained content."],
+["Where would a small 'Languages spoken' box fit best?",["&lt;header&gt;","&lt;aside&gt;","&lt;main&gt;","&lt;nav&gt;"],1,"&lt;aside&gt; is for supplementary information."],
+["Which attribute makes an image accessible to screen readers?",["title","src","alt","id"],2,"alt text describes the image when it can't be seen."],
+["Which tag marks a table heading cell?",["&lt;td&gt;","&lt;th&gt;","&lt;tr&gt;","&lt;thead&gt; only"],1,"&lt;th&gt; gives headings semantic meaning for assistive tech."],
+["Which CSS makes two equal columns?",["columns: equal","display: table-two","grid-template-columns: 1fr 1fr","float: both"],2,"Grid with 1fr 1fr splits space into two equal fractions."],
+["What is &lt;!-- like this --&gt; used for in this assessment?",["Showing text on the page","Documenting your code changes","Running JavaScript","Linking CSS"],1,"HTML comments are invisible to visitors but show markers where you modified the template."],
+["Which tool validates style.css?",["W3C CSS Validator","WAVE","W3C Link Checker","Lighthouse performance only"],0,"The W3C CSS Validator (Jigsaw) checks your stylesheet."]
+];
+var qi=0,qs=0,qk=0,qa=false;
+function renderQuiz(){
+ var el=document.getElementById("quiz"),h;
+ if(qi>=QZ.length){var p=Math.round(qs/QZ.length*100);el.innerHTML='<h2>Quiz complete</h2><div class="card"><div class="big">'+qs+'/'+QZ.length+'</div><p><span class="band">'+(p>=90?"🏆 Semantic Master":p>=70?"⭐ Solid Builder":"🌱 Keep Practising")+'</span></p><p>'+(p>=90?"You know your HTML5 structure. Use it in your own page.":"Revisit the Elements tab, then try again.")+'</p><button class="btn" id="qre">Play again</button></div>';return}
+ var q=QZ[qi];h='<h2>Semantic Quiz</h2><p class="lead">Question '+(qi+1)+' of '+QZ.length+' · Score '+qs+' · Streak 🔥 '+qk+'</p><div class="bar"><i style="width:'+qi/QZ.length*100+'%"></i></div><div class="card"><h3 style="margin-top:0">'+q[0]+'</h3>';
+ q[1].forEach(function(o,i){h+='<button class="opt" data-qa="'+i+'">'+o+'</button>'});
+ el.innerHTML=h+'<div id="qfb"></div></div>';qa=false;
+}
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button");if(!b)return;
+ if(b.dataset.qa!==undefined&&!qa){qa=true;var q=QZ[qi],ok=+b.dataset.qa==q[2];
+  document.querySelectorAll(".opt").forEach(function(o){if(+o.dataset.qa==q[2])o.classList.add("right")});
+  if(ok){qs++;qk++;b.classList.add("right");if(qk>=3)toast("🔥 "+qk+" in a row!")}else{qk=0;b.classList.add("wrong")}
+  document.getElementById("qfb").innerHTML='<p class="note"><b>'+(ok?"Correct! ":"Not quite. ")+'</b>'+q[3]+'</p><button class="btn" id="qn">'+(qi==QZ.length-1?"See result":"Next question")+'</button>'}
+ else if(b.id=="qn"){qi++;renderQuiz()}
+ else if(b.id=="qre"){qi=0;qs=0;qk=0;renderQuiz()}
+});
+
+renderScore();renderLab();renderTech();renderElems();renderTests();renderCheck();renderComm();renderPlay();renderLib();renderQuiz();show("score");
+</script>
+</body>
+</html>
